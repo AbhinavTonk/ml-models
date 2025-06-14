@@ -1,0 +1,19 @@
+# Virtual Env
+venv/
+
+# pycache folder
+__pycache__/
+
+# .git folder
+.git/
+
+# .idea folder
+.idea/
+
+outputs/
+
+rag_db/
+
+.ipynb_checkpoints/
+
+
