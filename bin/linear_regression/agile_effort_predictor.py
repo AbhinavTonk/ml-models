@@ -57,6 +57,7 @@ def predict_agile_effort(filePath, input_story_points, input_complexity):
     r2 = r2_score(df['Effort_Hours'], df['Predicted_Effort'])
     print("\n📉 Model Evaluation Metrics:")
     print(f"🔹 R² Score: {r2:.2f}") # Should be in between 0.80-1.0
+    # If it's not in acceptable range then a)Add more or better features b)Use Advanced Models (DecisionTreeRegressor, RandomForestRegressor etc..)
 
     # 9 - Create scatter plot using Matplotlib (Data Visulization)
     plt.figure(figsize=(8, 5))
