@@ -1,5 +1,7 @@
 import pandas as pd
 from sklearn.linear_model import LinearRegression
+from sklearn.metrics import r2_score
+import matplotlib.pyplot as plt
 
 def predict_agile_effort(filePath, input_story_points, input_complexity):
     # 1- Read csv file
@@ -27,7 +29,7 @@ def predict_agile_effort(filePath, input_story_points, input_complexity):
     predicted_user_effort = model.predict(user_input)[0] #This is a NumPy array with only one element in this case
 
     # (c) Add predicted effort and placeholder for actual effort
-    user_input['Effort_Hours'] = None  # No actual value known
+    user_input['Effort_Hours'] = 10  # No actual value known (it should be ideally None, but for calculating variance we have randomly hardcoded to 10
     user_input['Predicted_Effort'] = predicted_user_effort
 
     # (d) Append user_input to main DataFrame
@@ -50,6 +52,31 @@ def predict_agile_effort(filePath, input_story_points, input_complexity):
     df.to_csv('output/linear_regression/agile_effort_predicted_effort_output.csv', index=False)
     print("\n✅ Predictions saved to 'agile_effort_predicted_effort_output.csv'")
 
+
+    # 8 - Calculate R2 Variance for Model Performance
+    r2 = r2_score(df['Effort_Hours'], df['Predicted_Effort'])
+    print("\n📉 Model Evaluation Metrics:")
+    print(f"🔹 R² Score: {r2:.2f}") # Should be in between 0.80-1.0
+
+    # 9 - Create scatter plot using Matplotlib (Data Visulization)
+    plt.figure(figsize=(8, 5))
+    plt.scatter(df['Effort_Hours'], df['Predicted_Effort'], color='blue', alpha=0.7, label='Predicted vs Actual')
+
+    # Add ideal line (y = x)
+    plt.plot([df['Effort_Hours'].min(), df['Effort_Hours'].max()],
+             [df['Effort_Hours'].min(), df['Effort_Hours'].max()],
+             color='red', linestyle='--', label='Ideal Prediction')
+
+    # Set labels and title with R² score
+    plt.xlabel('Actual Effort Hours')
+    plt.ylabel('Predicted Effort Hours')
+    plt.title(f'Actual vs Predicted Effort (R² = {r2:.2f})')
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+
+    # Show plot
+    plt.show()
 
 if __name__=='__main__':
     predict_agile_effort('data/linear_regression/agile_effort.csv', 4, 8)
