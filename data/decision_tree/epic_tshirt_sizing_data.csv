@@ -1,0 +1,7 @@
+user_stories,complexity,dependencies,unknowns,team_familiarity,tshirt_size
+2,very_low,none,none,high,XS
+4,low,few,low,high,S
+6,moderate,some,medium,moderate,M
+8,high,many,high,low,L
+12,very_high,many,very_high,very_low,XL
+16,very_high,critical,very_high,very_low,XXL

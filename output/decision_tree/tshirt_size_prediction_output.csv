@@ -1,0 +1,8 @@
+user_stories,complexity,dependencies,unknowns,team_familiarity,tshirt_size,complexity_encoded,dependencies_encoded,unknowns_encoded,team_familiarity_encoded,tshirt_size_encoded,predicted_tshirt_size_encoded,predicted_tshirt_size
+2,very_low,none,none,high,XS,4,3,3,0,4,4,XS
+4,low,few,low,high,S,1,1,1,0,2,2,S
+6,moderate,some,medium,moderate,M,2,4,2,2,1,1,M
+8,high,many,high,low,L,0,2,0,1,0,0,L
+12,very_high,many,very_high,very_low,XL,3,2,4,3,3,3,XL
+16,very_high,critical,very_high,very_low,XXL,3,0,4,3,5,5,XXL
+4,high,critical,very_high,low,S,0,0,4,1,2,2,S
