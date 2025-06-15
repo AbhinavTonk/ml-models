@@ -1,5 +1,6 @@
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.tree import DecisionTreeClassifier, plot_tree
 import matplotlib.pyplot as plt
@@ -26,6 +27,10 @@ def epic_tshirt_size_prediction(filepath, input_user_stories, input_complexity, 
     # (b) Prepare features (encoded features) and target
     X = df[['user_stories', 'complexity_encoded', 'dependencies_encoded', 'unknowns_encoded', 'team_familiarity_encoded']]
     y = df['tshirt_size_encoded']
+
+    # (c) Train-Test Split (80% train, 20% test) - optional (rest of the code will change)
+    # X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
 
     # 3- Train Decision tree/RandomForest
     # model = DecisionTreeClassifier(max_depth=3, random_state=42)  # Only One Line Change to switch from DecisionTree to RandomForest
